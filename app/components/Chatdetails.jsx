@@ -6,8 +6,9 @@ import { AddPhotoAlternate } from "@mui/icons-material";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { CldUploadButton } from "next-cloudinary";
-import MessageBox from "./MessageBox";
+// import MessageBox from "./MessageBox";
 import { pusherClient } from "@lib/pusher";
+import MessageBox from "./Messagebox";
 // import { pusherClient } from "@lib/pusher";
 
 const ChatDetails = ({ chatId }) => {
