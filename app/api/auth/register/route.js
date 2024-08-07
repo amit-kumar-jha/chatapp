@@ -1,7 +1,7 @@
 // import User from "@models/User";
 // import { connectToDB } from "@mongodb";
 import { hash } from "bcryptjs";
-import User from "../../../modals/user";
+import User from "../../../models/user";
 import { connectToDB } from "../../../mongodb";
 
 export const POST = async (req, res) => {

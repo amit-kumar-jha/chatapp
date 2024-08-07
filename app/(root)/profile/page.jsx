@@ -38,6 +38,7 @@ const Profile = () => {
   };
 
   const updateUser = async (data) => {
+    console.log(data);
     setLoading(true);
     try {
       const res = await fetch(`/api/users/${user._id}/update`, {
@@ -95,7 +96,7 @@ const Profile = () => {
           <CldUploadButton
             options={{ maxFiles: 1 }}
             onUpload={uploadPhoto}
-            uploadPreset="upecg01j"
+            uploadPreset="mfjosb5e"
           >
             <p className="text-body-bold">Upload new photo</p>
           </CldUploadButton>

@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 
 // import { connectToDB } from "@mongodb";
-import User from "../../../modals/user";
+import User from "../../../models/user";
 import { connectToDB } from "../../../mongodb";
 // import User from "@models/User";
 
