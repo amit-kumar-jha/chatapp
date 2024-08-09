@@ -4,9 +4,12 @@ import { Logout } from "@mui/icons-material";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LogoutModal } from "./Modal/LogoutModal";
+import { useState } from "react";
 
 const BottomBar = () => {
   const pathname = usePathname();
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleLogout = async () => {
     signOut({ callbackUrl: "/" });
@@ -15,12 +18,25 @@ const BottomBar = () => {
   const { data: session } = useSession();
   const user = session?.user;
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const confirmLogout = () => {
+    closeModal();
+    handleLogout();
+  };
+
   return (
     <div className="bottom-bar">
       <Link
         href="/chats"
         className={`${
-          pathname === "/chats" ? "text-red-1" : ""
+          pathname === "/chats" ? "text-green-1" : ""
         } text-heading4-bold`}
       >
         Chats
@@ -28,7 +44,7 @@ const BottomBar = () => {
       <Link
         href="/contacts"
         className={`${
-          pathname === "/contacts" ? "text-red-1" : ""
+          pathname === "/contacts" ? "text-green-1" : ""
         } text-heading4-bold`}
       >
         Contacts
@@ -36,7 +52,7 @@ const BottomBar = () => {
 
       <Logout
         sx={{ color: "#737373", cursor: "pointer" }}
-        onClick={handleLogout}
+        onClick={openModal}
       />
 
       <Link href="/profile">
@@ -46,6 +62,11 @@ const BottomBar = () => {
           className="profilePhoto"
         />
       </Link>
+      <LogoutModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onConfirm={confirmLogout}
+      />
     </div>
   );
 };

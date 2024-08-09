@@ -9,6 +9,7 @@ import { CldUploadButton } from "next-cloudinary";
 
 import { pusherClient } from "@lib/pusher";
 import MessageBox from "./Messagebox";
+import EmojiPicker from "emoji-picker-react";
 
 const ChatDetails = ({ chatId }) => {
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,13 @@ const ChatDetails = ({ chatId }) => {
   const currentUser = session?.user;
 
   const [text, setText] = useState("");
+
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
+  const onEmojiClick = (emojiData) => {
+    const { emoji } = emojiData;
+    setText((prevText) => prevText + emoji);
+  };
 
   const getChatDetails = async () => {
     try {
@@ -160,6 +168,11 @@ const ChatDetails = ({ chatId }) => {
             />
           ))}
           <div ref={bottomRef} />
+          {showEmojiPicker && (
+            <div className="emoji-picker">
+              <EmojiPicker onEmojiClick={onEmojiClick} />
+            </div>
+          )}
         </div>
 
         <div className="send-message">
@@ -178,6 +191,13 @@ const ChatDetails = ({ chatId }) => {
                 }}
               />
             </CldUploadButton>
+
+            <button
+              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+              className="emoji-button"
+            >
+              😊
+            </button>
 
             <input
               type="text"
