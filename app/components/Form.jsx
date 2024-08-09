@@ -47,7 +47,6 @@ function Form({ type }) {
           ...data,
           redirect: false,
         });
-        console.log(res);
         if (res.ok) {
           router.push("/chats");
         }
@@ -64,7 +63,6 @@ function Form({ type }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
-    console.log("Icon clicked");
     setShowPassword((prev) => !prev);
   };
 
