@@ -6,11 +6,9 @@ Welcome to Chatty! This application provides real-time messaging capabilities wi
 
 - [Features](#features)
 - [Technologies](#technologies)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -34,8 +32,33 @@ This project uses the following technologies and libraries:
 - **bcryptjs**: A library for hashing passwords securely.
 - **date-fns**: A modern JavaScript date utility library.
 
+## Usage
+
+1. **Authentication**: Users can sign up, log in, and manage their sessions with NextAuth.
+2. **Real-time Chat**: Use the chat interface to send and receive messages in real-time, powered by Pusher.
+3. **Emoji Picker**: Use the integrated emoji picker to add emojis to your messages.
+
 ## Deployment
 
 The Chat App is deployed on Vercel. You can access it live at:
 
 https://chatapp-42fc.vercel.app/
+
+## Contributing
+
+Contributions are welcome! If you have suggestions or improvements, please fork the repository and submit a pull request.
+
+1. Fork the repository.
+2. Create a new branch:
+
+   git checkout -b feature/YourFeature
+
+3. Make your changes and commit them:
+
+   git commit -m "Add new feature"
+
+4. Push your changes to the branch:
+
+   git push origin feature/YourFeature
+
+5. Create a pull request.
