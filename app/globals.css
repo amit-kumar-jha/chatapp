@@ -36,11 +36,19 @@
 }
 
 .button {
-  @apply w-full px-5 py-3 mt-5 mb-7 rounded-xl cursor-pointer bg-blue-1 hover:bg-red-1 text-white text-body-bold;
+  @apply w-full px-5 py-3 mt-5 mb-7 rounded-xl cursor-pointer bg-stale-700 hover:bg-stale-400 text-white text-body-bold;
+}
+
+.button-primary-modal {
+  @apply w-full px-3 py-2 mt-5 rounded-xl cursor-pointer bg-stale-700 hover:bg-stale-400 text-white text-body-bold;
+}
+
+.button-secondary-modal {
+  @apply w-full px-3 py-2 mt-5 rounded-xl  cursor-pointer bg-white-1 hover:bg-stale-400 text-black text-body-bold border border-gray-400;
 }
 
 .link {
-  @apply text-base-medium hover:text-red-1;
+  @apply text-base-medium hover:text-blue-3 hover:underline;
 }
 
 /* Main Container */
@@ -63,7 +71,7 @@
 
 /* Bottom Bar */
 .bottom-bar {
-  @apply fixed bottom-0 z-50 w-full flex justify-between items-center px-5 py-2 bg-white sm:hidden
+  @apply fixed bottom-0 z-50 w-full flex justify-between items-center px-5 py-2 bg-white sm:hidden;
 }
 
 /* Profile Page */
@@ -72,7 +80,7 @@
 }
 
 .edit-profile {
-  @apply flex flex-col gap-9
+  @apply flex flex-col gap-9;
 }
 
 .profile {
@@ -159,6 +167,10 @@
 
 .message-box {
   @apply flex gap-3 items-start;
+}
+
+.input-icon-wrapper {
+  @apply inline-flex items-center cursor-pointer;
 }
 
 .message-profilePhoto {

@@ -95,7 +95,7 @@ const Contacts = () => {
                 onClick={() => handleSelect(user)}
               >
                 {selectedContacts.find((item) => item === user) ? (
-                  <CheckCircle sx={{ color: "red" }} />
+                  <CheckCircle sx={{ color: "blue" }} />
                 ) : (
                   <RadioButtonUnchecked />
                 )}
