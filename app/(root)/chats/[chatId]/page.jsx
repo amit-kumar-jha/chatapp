@@ -1,6 +1,6 @@
 "use client";
 
-import ChatDetails from "@app/components/ChatDetails";
+import ChatDetails from "@app/components/Chatdetails";
 import ChatList from "@app/components/ChatList";
 import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
