@@ -1,15 +1,14 @@
 "use client";
 import {
   EmailOutlined,
+  LockOpenOutlined,
   LockOutlined,
-  PasswordOutlined,
   PersonOutline,
 } from "@mui/icons-material";
 import Link from "next/link";
-// import { signIn } from "next-auth/react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -20,10 +19,6 @@ function Form({ type }) {
     watch,
     formState: { errors },
   } = useForm();
-
-  //   const onSubmit = async (data) => {
-  //     console.log(data);
-  //   };
 
   const router = useRouter();
 
@@ -66,12 +61,26 @@ function Form({ type }) {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    console.log("Icon clicked");
+    setShowPassword((prev) => !prev);
+  };
+
   return (
     <div className="auth">
       <div className="content">
-        <div className="text-heading3-bold">Chat App</div>
-
-        {/* <img src="/assets/logo.png" alt="logo" className="logo" /> */}
+        <div className="flex">
+          <div className="text-heading3-bold p-2">Chatty</div>
+          <img
+            src="/assets/newLogo.png"
+            height={"50px"}
+            width={"50px"}
+            alt="logo"
+            // className="logo"
+          />
+        </div>
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
           {type === "register" && (
             <div>
@@ -104,6 +113,10 @@ function Form({ type }) {
                 type="email"
                 {...register("email", {
                   required: "Email is required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Invalid email address",
+                  },
                 })}
                 placeholder="Email"
                 className="input-field"
@@ -118,7 +131,7 @@ function Form({ type }) {
             <div className="input">
               <input
                 defaultValue=""
-                type="password"
+                type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: "Password is required",
                   validate: (value) => {
@@ -133,7 +146,23 @@ function Form({ type }) {
                 placeholder="Password"
                 className="input-field"
               />
-              <LockOutlined sx={{ color: "#737373" }} />
+              {showPassword ? (
+                <div
+                  className="input-icon-wrapper"
+                  onClick={togglePasswordVisibility}
+                >
+                  <LockOpenOutlined
+                    sx={{ color: "#737373", cursor: "pointer" }}
+                  />
+                </div>
+              ) : (
+                <div
+                  className="input-icon-wrapper"
+                  onClick={togglePasswordVisibility}
+                >
+                  <LockOutlined sx={{ color: "#737373", cursor: "pointer" }} />
+                </div>
+              )}
             </div>
             {errors.password && (
               <p className="text-red-500">{errors.password.message}</p>
@@ -145,15 +174,19 @@ function Form({ type }) {
           </button>
         </form>
         {type === "register" ? (
-          <Link href="/" className="link">
-            {" "}
-            <p className="text-center">Already have an account? Sign in Here</p>
-          </Link>
+          <p className="text-center">
+            Already have an account?{" "}
+            <Link href="/" className="link">
+              Sign In
+            </Link>
+          </p>
         ) : (
-          <Link href="/register" className="link">
-            {" "}
-            <p className="text-center">Don't have an account? Register Here</p>
-          </Link>
+          <p className="text-center">
+            Don't have an account?{" "}
+            <Link href="/register" className="link">
+              Register
+            </Link>
+          </p>
         )}
       </div>
     </div>
