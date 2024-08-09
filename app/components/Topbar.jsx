@@ -76,7 +76,6 @@ const TopBar = () => {
           />
         </Link>
       </div>
-      {/* Include the Logout Modal */}
       <LogoutModal
         isOpen={isModalOpen}
         onClose={closeModal}
