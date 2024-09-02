@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "../globals.css";
 import ToasterContext from "../components/ToasterContext";
 import Provider from "@app/components/Provider";
@@ -17,6 +18,8 @@ export default function RootLayout({ children }) {
         <Provider>
           <ToasterContext />
           {children}
+
+          <Analytics />
         </Provider>
       </body>
     </html>
