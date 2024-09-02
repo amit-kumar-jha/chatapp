@@ -36,8 +36,8 @@ const ChatList = ({ currentChatId }) => {
   }, [currentUser, search]);
 
   useEffect(() => {
-    if (currentUser) {
-      pusherClient.subscribe(currentUser._id);
+    if (currentUser && currentUser._id) {
+      pusherClient?.subscribe(currentUser._id);
 
       const handleChatUpdate = (updatedChat) => {
         setChats((allChats) =>
