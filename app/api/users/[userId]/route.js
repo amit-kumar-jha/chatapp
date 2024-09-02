@@ -27,7 +27,6 @@ export const GET = async (req, { params }) => {
 
     return new Response(JSON.stringify(allChats), { status: 200 });
   } catch (err) {
-    console.log(err);
     return new Response("Failed to get all chats of current user", {
       status: 500,
     });
