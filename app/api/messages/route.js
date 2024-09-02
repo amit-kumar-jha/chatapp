@@ -1,9 +1,3 @@
-// import { pusherServer } from "@lib/pusher";
-// import Chat from "@models/Chat";
-// import Message from "@models/Message";
-// import User from "@models/User";
-// import { connectToDB } from "@mongodb";
-
 import Chat from "@app/models/Chat";
 import Message from "@app/models/Message";
 import User from "@app/models/user";
@@ -65,7 +59,6 @@ export const POST = async (req) => {
 
     return new Response(JSON.stringify(newMessage), { status: 200 });
   } catch (err) {
-    console.log(err);
     return new Response("Failed to create new message", { status: 500 });
   }
 };

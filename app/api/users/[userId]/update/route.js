@@ -22,7 +22,6 @@ export const POST = async (req, { params }) => {
 
     return new Response(JSON.stringify(updatedUser), { status: 200 });
   } catch (err) {
-    console.log(err);
     return new Response("Failed to update user", { status: 500 });
   }
 };

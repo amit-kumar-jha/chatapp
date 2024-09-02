@@ -32,7 +32,6 @@ export const GET = async (req, { params }) => {
 
     return new Response(JSON.stringify(searchedChat), { status: 200 });
   } catch (err) {
-    console.log(err);
     return new Response("Failed to search chat", { status: 500 });
   }
 };

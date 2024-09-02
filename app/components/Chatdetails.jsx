@@ -74,7 +74,6 @@ const ChatDetails = ({ chatId }) => {
   };
 
   const sendPhoto = async (result) => {
-    console.log(result?.info?.secure_url);
     try {
       const res = await fetch("/api/messages", {
         method: "POST",
