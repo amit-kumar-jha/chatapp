@@ -36,11 +36,13 @@ function Form({ type }) {
         },
         body: JSON.stringify(data),
       });
-
+      console.log(res);
       if (res.ok) {
         router.push("/");
       }
-
+      if (res.status === 400) {
+        toast.error("Email already exist");
+      }
       if (res.error) {
         toast.error("Something went wrong");
       }
